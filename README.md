@@ -191,7 +191,9 @@
     SELECT id, title, type, description, release_year, age_certification, runtime, genres,
 	        production_countries, seasons, imdb_id, imdb_votes, tmdb_popularity, tmdb_score,
 	        streaming_media FROM movies_disney;
-         
+
+![image](https://github.com/user-attachments/assets/c3287543-afd0-41d3-8e2c-7267de9d922a)
+
 -- Netflix Actors & Directors Table
 --------- CREATE Netflix Actors & Directors TABLE
 
@@ -265,6 +267,8 @@
     SELECT person_id, id, name, character, role, streaming_media 
     FROM cast_director_netflix;
 
+![image](https://github.com/user-attachments/assets/9b0e6361-9c4e-4460-b822-b186adaf170b)
+
 -- Cast Director Movie Table
 --------- JOIN movies AND cast_director TABLES TOGETHER
 
@@ -294,7 +298,9 @@
 -- Country Code Table
 --------- CREATE country code TABLE
 
-    CREATE TABLE country_code (country text, abbrev text)
+    CREATE TABLE country_code (country text, abbrev text);
+
+![image](https://github.com/user-attachments/assets/289112d3-92f2-4ada-9359-66520dc9d92a)
 
 --------- JOIN COUNTRY CODE TABLE WITH MOVIES TABLE AND SPLIT countries INTO DISTINCT countries 
 
@@ -318,6 +324,8 @@
         FROM fix_table
         LEFT JOIN country_code
         ON fix_table.country = country_code.abbrev
+
+ ![image](https://github.com/user-attachments/assets/37dde5c3-5051-44b3-8904-d6cf7c196199)
         
 --------- SPLIT GENRES INTO INDIVIDUAL GENRE AND COUNT 
 
@@ -328,5 +336,7 @@
         SELECT distinct genres, COUNT(genres), streaming_media
         FROM split_genres_table
         GROUP BY genres, streaming_media
+
+![image](https://github.com/user-attachments/assets/7be0a456-7225-495b-88ff-8654f54f5732)
 
 ![image](https://github.com/user-attachments/assets/3f29914a-c351-4a79-8149-65d7038279f6)
