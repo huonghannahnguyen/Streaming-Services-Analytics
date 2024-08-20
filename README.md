@@ -1,5 +1,11 @@
 # Streaming-Services-Analytics
-# Netflix Table
+
+-- https://www.kaggle.com/datasets/victorsoeiro/netflix-tv-shows-and-movies
+
+-- Link Tableau Dashboard: https://public.tableau.com/app/profile/huong6399/viz/StreamingServicesAnalyticsDashboard/Story1
+
+-- Netflix Table
+
 --------- CREATE Netflix TABLE
 
     CREATE TABLE movies_netflix (id varchar, title varchar, type text,
@@ -34,7 +40,7 @@
 
 ![image](https://github.com/user-attachments/assets/becfa6a0-84da-4a68-9810-3d1cd2fabc0a)
 
-# HBO Max Table
+-- HBO Max Table
 ---------- CREATE HBO Max TABLE 
 
     CREATE TABLE movies_HBOMax (id varchar, title varchar, type text,
@@ -66,7 +72,7 @@
 
 ![image](https://github.com/user-attachments/assets/c48645f4-4f05-44c9-aadd-76aeabef66d7)
     
-# Hulu Table
+-- Hulu Table
 -------- CREATE Hulu TABLE 
 
     CREATE TABLE movies_hulu (id varchar, title varchar, type text,
@@ -98,7 +104,7 @@
 
 ![image](https://github.com/user-attachments/assets/82564d47-75e1-4f02-9412-e30534e74614)
 
-# Disney+ Table
+-- Disney+ Table
 ---------- CREATE Disney+ TABLE
 
     CREATE TABLE movies_disney (id varchar, title varchar, type text,
@@ -130,7 +136,7 @@
 
 ![image](https://github.com/user-attachments/assets/2cec2e93-b3ee-4e87-bcbb-5f9fb4a3265f)
 
-# Amazon Prime Table
+-- Amazon Prime Table
 --------- CREATE Amazon Prime TABLE
 
     CREATE TABLE movies_amazon (id varchar, title varchar, type text,
@@ -162,7 +168,7 @@
 
 ![image](https://github.com/user-attachments/assets/c0010977-5fbe-4540-8da8-bbb7f10e3226)
     
-# Movies Table
+-- Movies Table
 --------- UNION ALL TABLES TOGETHER
 
     CREATE TABLE movies AS
@@ -186,7 +192,7 @@
 	        production_countries, seasons, imdb_id, imdb_votes, tmdb_popularity, tmdb_score,
 	        streaming_media FROM movies_disney;
          
-# Netflix Actors & Directors Table
+-- Netflix Actors & Directors Table
 --------- CREATE Netflix Actors & Directors TABLE
 
     CREATE TABLE cast_director_netflix (person_id int, id varchar, name text, character varchar,
@@ -207,7 +213,7 @@
     ALTER TABLE cast_director_hbomax
     ADD COLUMN streaming_media text DEFAULT 'HBO Max';
 
-# Hulu Actors & Directors Table
+-- Hulu Actors & Directors Table
 --------- CREATE Hulu Actors & Directors TABLE
 
     CREATE TABLE cast_director_hulu (person_id int, id varchar, name text, character varchar,
@@ -218,7 +224,7 @@
     ALTER TABLE cast_director_hulu
     ADD COLUMN streaming_media text DEFAULT 'Hulu';
 
-# Disney+ Actors & Directors Table
+-- Disney+ Actors & Directors Table
 --------- CREATE Disney+ Actors & Directors TABLE
 
     CREATE TABLE cast_director_disney (person_id int, id varchar, name text, character varchar,
@@ -229,7 +235,7 @@
     ALTER TABLE cast_director_disney
     ADD COLUMN streaming_media text DEFAULT 'Disney+';
 
-# Amazon Actors & Directors Table
+-- Amazon Actors & Directors Table
 --------- CREATE Amazon Actors & Directors TABLE
 
     CREATE TABLE cast_director_amazon (person_id int, id varchar, name text, character varchar,
@@ -240,7 +246,7 @@
     ALTER TABLE cast_director_amazon
     ADD COLUMN streaming_media text DEFAULT 'Amazon Prime';
 
-# Cast Director Table
+-- Cast Director Table
 --------- UNION ALL Actors & Directors TABLES TOGETHER
 
     CREATE TABLE cast_director AS
@@ -259,7 +265,7 @@
     SELECT person_id, id, name, character, role, streaming_media 
     FROM cast_director_netflix;
 
-# Cast Director Movie Table
+-- Cast Director Movie Table
 --------- JOIN movies AND cast_director TABLES TOGETHER
 
     CREATE TABLE cast_director_movie AS 
@@ -285,7 +291,7 @@
 	        COALESCE(tmdb_popularity::text,'') AS tmdb_popularity, COALESCE(tmdb_score::text,'') AS tmdb_score, streaming_media
     FROM first_table;
     
-# Country Code Table
+-- Country Code Table
 --------- CREATE country code TABLE
 
     CREATE TABLE country_code (country text, abbrev text)
